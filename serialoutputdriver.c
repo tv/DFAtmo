@@ -232,6 +232,7 @@ static int serial_driver_open(output_driver_t *this_gen, atmo_parameters_t *p) {
     case 230400:
       bspeed = SPEED_CONST(230400);
       break;
+#ifndef __APPLE__
     case 460800:
       bspeed = SPEED_CONST(460800);
       break;
@@ -268,6 +269,7 @@ static int serial_driver_open(output_driver_t *this_gen, atmo_parameters_t *p) {
     case 4000000:
       bspeed = SPEED_CONST(4000000);
       break;
+#endif
 #endif
     default:
       snprintf(this->output_driver.errmsg, sizeof(this->output_driver.errmsg), "serial port device speed '%s' unsupported", speed);

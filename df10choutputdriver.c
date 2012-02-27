@@ -103,7 +103,8 @@ struct df10ch_output_driver_s {
   int transfer_err_cnt;             // Number of transfer errors
 };
 
-#ifndef HAVE_LIBUSB_STRERROR
+#if defined HAVE_LIBUSB_STRERROR || defined __APPLE__
+#else
 static const char *libusb_strerror(int rc) {
   switch (rc) {
   case LIBUSB_SUCCESS:

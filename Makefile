@@ -87,22 +87,22 @@ xineinstall: xineplugin
 
 xbmcinstall:
 	$(INSTALL) -m 0755 -d $(XBMCADDONDIR)
-	$(INSTALL) -m 0644 -t $(XBMCADDONDIR) addon.xml dfatmo.py icon.png
+	$(INSTALL) -m 0644 addon.xml dfatmo.py icon.png $(XBMCADDONDIR)
 	$(INSTALL) -m 0644 HISTORY $(XBMCADDONDIR)/changelog.txt
 	$(INSTALL) -m 0644 COPYING $(XBMCADDONDIR)/LICENSE.txt
 	$(INSTALL) -m 0755 -d $(XBMCADDONDIR)/resources
-	$(INSTALL) -m 0644 -t $(XBMCADDONDIR)/resources settings.xml
+	$(INSTALL) -m 0644 settings.xml $(XBMCADDONDIR)/resources
 	$(INSTALL) -m 0755 -d $(XBMCADDONDIR)/resources/lib/drivers
-	$(INSTALL) -m 0644 -t $(XBMCADDONDIR)/resources/lib/drivers mydriver.py
+	$(INSTALL) -m 0644 mydriver.py $(XBMCADDONDIR)/resources/lib/drivers
 
 dfatmoinstall: dfatmo
 	$(INSTALL) -m 0755 -d $(DFATMOLIBDIR)
 ifdef ATMODRIVER
-	$(INSTALL) -m 0644 -t $(DFATMOLIBDIR) $(ATMODRIVER)
+	$(INSTALL) -m 0644 $(ATMODRIVER) $(DFATMOLIBDIR)
 endif
 	$(INSTALL) -m 0755 -d $(DFATMOLIBDIR)/drivers
-	$(INSTALL) -m 0644 -t $(DFATMOLIBDIR)/drivers $(OUTPUTDRIVERS)
-	$(INSTALL) -m 0644 -t $(DFATMOINCLDIR) dfatmo.h
+	$(INSTALL) -m 0644 $(OUTPUTDRIVERS) $(DFATMOLIBDIR)/drivers
+	$(INSTALL) -m 0644 dfatmo.h $(DFATMOINCLDIR)
 
 clean:
 	-rm -f *.so* *.o $(XBMCADDON)
